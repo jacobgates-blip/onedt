@@ -6,7 +6,6 @@ services:
       - ..:/var/www/html
     ports:
       - "8080:80"
-    # Added "chown" to prevent permission errors with Git files
     command: >
       sh -c "docker-php-ext-install mysqli &&
       chown -R www-data:www-data /var/www/html &&
@@ -17,7 +16,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 0wlBear
-      MYSQL_DATABASE: gate_db
+      MYSQL_DATABASE: gate-db
     ports:
       - "3306:3306"
 
@@ -29,6 +28,6 @@ services:
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: 0wlbear
+      MYSQL_ROOT_PASSWORD: 0wlBear
     volumes:
       - ./phpmyadmin-config.php:/etc/phpmyadmin/config.user.inc.php
